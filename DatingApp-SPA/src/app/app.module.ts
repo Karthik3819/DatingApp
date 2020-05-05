@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { BsDropdownModule, TabsModule } from 'ngx-bootstrap';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker'
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
 import { JwtModule } from '@auth0/angular-jwt';
@@ -32,6 +32,7 @@ import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { PreventUnsavedChanges } from './_gaurds/_prevent_unsaved_changes.guard';
 import {PhotoEditorComponent} from './members/photo-editor/photo-editor.component';
 import { FileUploadModule } from 'ng2-file-upload';
+import { TimeagoModule } from 'ngx-timeago';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -72,7 +73,8 @@ export function tokenGetter() {
             whitelistedDomains: ['localhost:5000'],
             blacklistedRoutes: ['localhost:5000/api/auth']
          }
-      })
+      }),
+      TimeagoModule.forRoot()
    ],
    providers: [
       ErrorInterceptorProvider,
